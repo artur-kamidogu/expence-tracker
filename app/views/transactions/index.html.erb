@@ -1,6 +1,13 @@
 <p style="color: green"><%= notice %></p>
 <header class="flex items-center justify-between">
   <h1 class="text-xl md:text-3xl font-semibold">Transactions</h1>
-  <%= link_to 'New Transaction', new_transaction_path, class: 'btn btn-sm md:btn-md btn-success' %>
+  <%= link_to 'New Transaction', new_transaction_path, class: 'btn btn-sm md:btn-md btn-success' %>  
 </header>
+<%= form_with url: transactions_path, method: :get, class: "flex gap-4 items-end" do %>
+  <%= select_tag :category_id, options_from_collection_for_select(@categories, 'id', 'name'), include_blank: "All Categories", class: "select select-bordered w-full max-w-xs", onchange: "this.form.submit()" %>
+  <%= date_field_tag :start_date, params[:start_date], class: "input input-bordered w-full max-w-xs", onchange: "this.form.submit()" %>
+  <%= date_field_tag :end_date, params[:end_date], class: "input input-bordered w-full max-w-xs", onchange: "this.form.submit()" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "input input-bordered w-full max-w-xs" %>
+  <%= submit_tag "Filter", class: "btn btn-primary" %>
+<% end %>
 <%= render 'transactions/table' %>

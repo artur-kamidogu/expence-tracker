@@ -4,7 +4,27 @@ class TransactionsController < ApplicationController
 
   # GET /transactions or /transactions.json
   def index
-    @transactions = Transaction.where(user: current_user).joins(:category).order(date: :desc)
+    @transactions = Transaction.where(user: current_user).includes(:category).order(date: :desc)
+
+    if params[:category_id].present?
+      @transactions = @transactions.where(category_id: params[:category_id])
+    end
+
+    if params[:start_date].present?
+      @transactions = @transactions.where('date >= ?', params[:start_date])
+    end
+
+    if params[:end_date].present?
+      @transactions = @transactions.where('date <= ?', params[:end_date])
+    end
+
+    if params[:search].present?
+      search_term = "%#{params[:search]}%"
+      @transactions = @transactions.where('transactions.description LIKE ?', search_term)
+    end
+    
+    @categories = Category.where(user: current_user)
+
   end
 
   # GET /transactions/1 or /transactions/1.json
@@ -17,12 +37,12 @@ class TransactionsController < ApplicationController
       .order(date: :desc)
   end
 
-  # GET /transactions/new
-  def new
-    categories
-    @transaction = Transaction.new
-  end
-  
+    # GET /transactions/new
+    def new
+      categories
+      @transaction = Transaction.new
+    end
+
   # GET /transactions/1/edit
   def edit
     authorize @transaction
