@@ -2,33 +2,146 @@
 
 ![finances-thumb](https://user-images.githubusercontent.com/63426656/226148785-0c108670-5fe3-4ce6-9a14-2012d9868de9.png)
 
-This is a Ruby on Rails web application for managing transactions. Users can register their transactions with categories such as income and expenses, and view statistics about them.
+Конечно! Вот готовый текст на русском языке для файла `README.md`:
 
-You can use the application at https://finances-expense-tracker.fly.dev
+```markdown
+# 💸 Expense Tracker — Установка и запуск проекта
 
-## 🚀 Features
+## 🚀 Быстрый старт в WSL (Ubuntu) (не повторяйте моих ошибой делайте git clone сразу из под wsl )
 
-- User authentication: Users can create an account, log in, and manage their transactions.
-- Transaction management: Users can register their transactions with categories such as income, expenses, savings, and investments.
-- Dashboard: Users can view statistics about their transactions, including total income, total expenses, and net worth.
-- Categories management: Users can manage their transaction categories, including adding, updating, and deleting them.
+Инструкция по установке и запуску проекта в среде WSL (например, Ubuntu в Windows 10/11).
 
-## 🛠️ Getting started
+---
 
-To run this application locally, you'll need to have Ruby 3.2, Rails 7 and Node v18.15.0. Once you have those set up, follow these steps:
+## 🧱 Требования
 
-1. Clone the repository: `git clone https://github.com/matews-sousa/expense-tracker.git`
-2. Navigate to the project directory: `cd transaction-management-app`
-3. Install the dependencies: `bundle install`
-4. Set up the database: `rails db:create && rails db:migrate`
-5. Start the server: `bin/dev`
+- Ruby 3.2.1
+- Node.js и npm
+- Yarn
+- PostgreSQL
+- RVM (Ruby Version Manager)
+- Bundler
 
-The application should now be accessible at http://localhost:3000/. If you make changes to the JavaScript code, Tailwind classes or the Rails application, the server will automatically reload. 
+---
 
-## 🌎 Deployment
+## 🛠️ Установка и настройка
 
-This application can be deployed to any cloud platform that supports Ruby on Rails applications. We recommend using [Fly.io](https://fly.io/), a modern platform for deploying and scaling applications.
+### 1. Установи системные зависимости
 
-## 👥 Contributing
+```bash
+sudo apt update
+sudo apt install curl gnupg build-essential libpq-dev nodejs npm -y
+```
 
-If you'd like to contribute to this project, please fork the repository, make your changes, and submit a pull request. We welcome contributions of all kinds, including bug fixes, new features, and improvements to the documentation.
+### 2. Установи Ruby через RVM
+
+```bash
+\curl -sSL https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm install 3.2.1
+rvm use 3.2.1 --default
+```
+
+### 3. Установи Yarn и обнови npm
+
+```bash
+sudo npm install -g yarn
+sudo npm install -g npm@latest
+```
+
+Проверь версии:
+
+```bash
+ruby -v
+node -v
+npm -v
+yarn -v
+```
+
+---
+
+### 4. Установи и настрой PostgreSQL
+
+```bash
+sudo apt install postgresql postgresql-contrib -y
+```
+
+Создай пользователя `root` с паролем:
+
+```bash
+sudo -i -u postgres
+psql
+CREATE USER root WITH PASSWORD 'your_password';
+ALTER USER root WITH SUPERUSER;
+\q
+exit
+```
+
+---
+
+### 5. Подготовь проект
+
+Перейди в директорию проекта:
+
+```bash
+cd ~/путь/к/проекту/expense-tracker
+```
+
+Если проект был скачан в Windows — переконвертируй окончания строк:
+
+```bash
+sudo apt install dos2unix
+find . -type f -exec dos2unix {} \;
+```
+
+---
+
+### 6. Установи зависимости
+
+Ruby-гемы:
+
+```bash
+bundle install
+```
+
+Node-модули:
+
+```bash
+yarn install
+```
+
+---
+
+### 7. Настрой базу данных
+
+Открой `config/database.yml` и укажи:
+
+```yaml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: root
+  password: your_password
+  host: localhost
+```
+
+---
+
+### 8. Создай базу данных и применяй миграции
+
+```bash
+rails db:create && rails db:migrate
+```
+
+---
+
+### 9. Запусти сервер
+
+```bash
+bin/dev
+```
+---
+
+Теперь проект доступен на `http://localhost:3000` 🎉  
+```
+
