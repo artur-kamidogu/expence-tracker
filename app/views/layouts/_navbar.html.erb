@@ -12,8 +12,12 @@
     </li>
   </ul>
   <% if current_user %>
-    <div>
-      <%= button_to 'Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-error' %>
-    </div>
-  <% end %>
+  <div class="flex items-center space-x-4">
+    <%= button_to 'Profile', edit_user_registration_path, method: :get, 
+          class: "px-4 py-3 btn-error rounded-md font-medium text-white #{'bg-green-600' if current_page?(edit_user_registration_path)}" %>
+    
+    <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, 
+          class: 'btn btn-error' %>
+  </div>
+<% end %>
 </nav>
