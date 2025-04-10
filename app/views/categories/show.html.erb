@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+<header class="flex justify-between items-center">
+  <h1 class="text-3xl font-semibold">
+    <%= @category.name %>
+    -
+    <%= @category.category_type.upcase %>
+  </h1>
+  <div class="flex gap-4">
+    <%= link_to "Edit", edit_category_path(@category), class: 'btn btn-info' %>
+    <%= button_to "Delete", @category, method: :delete, class: 'btn btn-error' %>
+  </div>
+</header>
+<%= render 'transactions/table', transactions: @transactions %>

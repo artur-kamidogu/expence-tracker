@@ -1,0 +1,12 @@
+<h1 class="text-3xl font-semibold mb-6">Welcome, <%= current_user.name %></h1>
+<%= render 'dashboard/total_transactions' %>
+<div class="grid grid-cols-1 md:grid-cols-3 mt-4 space-y-4 md:space-y-0 md:gap-4">
+  <div class="col-span-1 bg-gray-800 rounded-md p-4">
+    <h2 class="text-2xl font-semibold mb-4">Transactions per category</h2>
+    <%= pie_chart @total_per_category, responsive: true, legend: "top", library: { backgroundColor: 'transparent' } %>
+  </div>
+  <div class="col-span-2 bg-gray-800 rounded-md p-4">
+    <h2 class="text-2xl font-semibold mb-4">Categories per month</h2>
+    <%= line_chart @transactions.group(:name).group_by_month(:date).sum(:amount), responsive: true, legend: "top", library: { backgroundColor: 'transparent' } %>
+  </div>
+</div>

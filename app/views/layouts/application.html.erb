@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finances</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  </head>
+  <body>
+    <% unless controller_name == 'registrations' or controller_name == 'sessions' %>
+      <%= render 'layouts/navbar' %>
+      <%= render 'layouts/bottom_nav' %>
+      <main class="px-4 md:px-10 py-6">
+        <%= yield %>
+      </main>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+<header class="flex justify-between items-center mb-6">
+  <h1 class="text-3xl font-semibold">
+    <%= @transaction.description %>
+    -
+    <%= @transaction.category.name %>
+    -
+    <%= @transaction.category.category_type.upcase %>
+  </h1>
+  <div class="flex gap-4">
+    <%= link_to "Edit", edit_transaction_path(@transaction), class: 'btn btn-info' %>
+    <%= button_to "Delete", @transaction, method: :delete, class: 'btn btn-error' %>
+  </div>
+</header>
+<p class="text-lg font-medium">Amount: $<%= @transaction.amount %></p>
+<h2 class="mt-6 text-xl font-semibold">Other transactions in this category</h2>
+<%= render 'transactions/table', transactions: @transactions %>

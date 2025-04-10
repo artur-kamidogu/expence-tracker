@@ -1,0 +1,24 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-control mt-6">
+    <%= form.label :name, class: 'label label-text' %>
+    <%= form.text_field :name, class: 'input input-bordered' %>
+  </div>
+  <div class="form-control">
+    <%= form.label :category_type, class: 'label label-text' %>
+    <%= form.select :category_type, options_for_select(Category.category_types.map {|key, value| [key.titleize, key]}, @category.category_type), {}, class: 'select select-bordered' %>
+  </div>
+  <div class="flex gap-4 mt-6">
+    <%= link_to "Cancel", categories_path, class: 'btn btn-outline' %>
+    <%= form.submit "Create", class: "btn btn-success" %>
+  </div>
+<% end %>
