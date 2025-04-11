@@ -10,6 +10,11 @@
     <li>
       <%= link_to 'Transactions', transactions_path, class: "px-4 py-3 rounded-md text-gray-500 font-medium #{'text-white bg-gray-700' if current_page?(transactions_path)}" %>
     </li>
+    <% if current_user&.admin? || current_user&.moderator? %>
+      <li>
+        <%= link_to 'Users', users_path, class: "px-4 py-3 rounded-md text-gray-500 font-medium #{'text-white bg-gray-700' if current_page?(users_path)}" %>
+      </li>
+    <% end %>
   </ul>
   <% if current_user %>
   <div class="flex items-center space-x-4">

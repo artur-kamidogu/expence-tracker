@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'user/registrations'
   }
   resources :transactions
+  resources :users
   resources :categories
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
