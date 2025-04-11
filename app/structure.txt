@@ -1,0 +1,112 @@
+.
+├── assets
+│   ├── builds
+│   │   ├── application.css
+│   │   ├── application.js
+│   │   └── application.js.map
+│   ├── config
+│   │   └── manifest.js
+│   ├── images
+│   └── stylesheets
+│       └── application.tailwind.css
+├── channels
+│   └── application_cable
+│       ├── channel.rb
+│       └── connection.rb
+├── controllers
+│   ├── application_controller.rb
+│   ├── categories_controller.rb
+│   ├── concerns
+│   ├── dashboard_controller.rb
+│   ├── telegram_bot_controller.rb
+│   ├── transactions_controller.rb
+│   └── user
+│       ├── confirmations_controller.rb
+│       ├── omniauth_callbacks_controller.rb
+│       ├── passwords_controller.rb
+│       ├── registrations_controller.rb
+│       ├── sessions_controller.rb
+│       └── unlocks_controller.rb
+├── helpers
+│   ├── application_helper.rb
+│   ├── categories_helper.rb
+│   ├── home_helper.rb
+│   └── transactions_helper.rb
+├── javascript
+│   ├── application.js
+│   └── controllers
+│       ├── application.js
+│       ├── hello_controller.js
+│       └── index.js
+├── jobs
+│   └── application_job.rb
+├── mailers
+│   └── application_mailer.rb
+├── models
+│   ├── application_record.rb
+│   ├── category.rb
+│   ├── concerns
+│   ├── transaction.rb
+│   └── user.rb
+├── policies
+│   ├── application_policy.rb
+│   ├── category_policy.rb
+│   └── transaction_policy.rb
+├── structure.txt
+├── telegram_bot.rb
+└── views
+    ├── categories
+    │   ├── _category.html.erb
+    │   ├── _category.json.jbuilder
+    │   ├── _form.html.erb
+    │   ├── _table.html.erb
+    │   ├── edit.html.erb
+    │   ├── index.html.erb
+    │   ├── index.json.jbuilder
+    │   ├── new.html.erb
+    │   ├── show.html.erb
+    │   └── show.json.jbuilder
+    ├── dashboard
+    │   ├── _total_transactions.html.erb
+    │   └── index.html.erb
+    ├── devise
+    │   ├── confirmations
+    │   │   └── new.html.erb
+    │   ├── mailer
+    │   │   ├── confirmation_instructions.html.erb
+    │   │   ├── email_changed.html.erb
+    │   │   ├── password_change.html.erb
+    │   │   ├── reset_password_instructions.html.erb
+    │   │   └── unlock_instructions.html.erb
+    │   ├── passwords
+    │   │   ├── edit.html.erb
+    │   │   └── new.html.erb
+    │   ├── registrations
+    │   │   ├── edit.html.erb
+    │   │   └── new.html.erb
+    │   ├── sessions
+    │   │   └── new.html.erb
+    │   ├── shared
+    │   │   ├── _error_messages.html.erb
+    │   │   └── _links.html.erb
+    │   └── unlocks
+    │       └── new.html.erb
+    ├── layouts
+    │   ├── _bottom_nav.html.erb
+    │   ├── _navbar.html.erb
+    │   ├── application.html.erb
+    │   ├── mailer.html.erb
+    │   └── mailer.text.erb
+    └── transactions
+        ├── _form.html.erb
+        ├── _table.html.erb
+        ├── _transaction.html.erb
+        ├── _transaction.json.jbuilder
+        ├── edit.html.erb
+        ├── index.html.erb
+        ├── index.json.jbuilder
+        ├── new.html.erb
+        ├── show.html.erb
+        └── show.json.jbuilder
+
+32 directories, 78 files

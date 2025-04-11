@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+require_relative '../config/environment'
+
+loop do
+  begin
+    TelegramBot.run
+  rescue Telegram::Bot::Exceptions::ResponseError => e
+    puts "Ошибка Telegram: #{e.message}. Перезапуск через 5 секунд..."
+    sleep 5
+  rescue => e
+    puts "Критическая ошибка: #{e.message}. Перезапуск через 10 секунд..."
+    sleep 10
+  end
+end
